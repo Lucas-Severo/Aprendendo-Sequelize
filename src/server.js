@@ -1,13 +1,12 @@
 const express = require('express');
 const Sequelize = require('sequelize');
 const app = express();
+const routes = require('./routes');
+require('dotenv').config();
 
-const sequelize = new Sequelize('basic_crud', process.env.USER_NAME, process.env.PASSWORD, {
-    dialect: 'postgres'
-})
 
-app.get("/", (req, res) => {
-    return res.json({message: "Nada"});
-});
+const Pedido = require('./models/Pedido');
+
+app.use(routes);
 
 app.listen(3000);
